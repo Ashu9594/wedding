@@ -104,7 +104,7 @@
 
   /* ================= Music ================= */
   const music = (() => {
-    const a = new Audio('assets/audio/song.mp3'); a.loop = true; a.preload = 'none'; a.volume = 0;
+    const a = new Audio('assets/audio/lagin-sarai.mp3'); a.loop = true; a.preload = 'none'; a.volume = 0;
     const btn = $('#musicBtn'); let on = false, fade = null;
     function ramp(to, ms, done) {
       clearInterval(fade); const from = a.volume, t0 = performance.now();
