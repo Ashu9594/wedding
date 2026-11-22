@@ -234,6 +234,7 @@ html:lang(mr) .pull p{font-family:var(--f-mr-head);font-style:normal}
 .ch-media{aspect-ratio:4/5;position:relative;border-radius:2px;box-shadow:0 0 0 1px rgba(198,161,91,.6),0 30px 60px rgba(0,0,0,.35)}
 .ch-media img{position:absolute;inset:-6% 0;width:100%;height:112%;aspect-ratio:auto;object-fit:cover;transform:translate3d(0,var(--py,0px),0);transition:filter .8s}
 .ch-media:hover img{transform:translate3d(0,var(--py,0px),0) scale(1.04)}
+.ch-media.ch-wide{aspect-ratio:3/2}
 .ch-text{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding-inline:4%}
 .ch-num{font-family:var(--f-head);font-size:.95rem;letter-spacing:.3em;color:var(--gold)}
 .ch-num::after{content:"";display:block;width:36px;height:1px;background:var(--gold);margin:12px auto 0;opacity:.7}
@@ -243,6 +244,7 @@ html:lang(mr) .ch-cap{font-family:var(--f-mr-head);font-style:normal;line-height
   .chapter{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px}
   .chapter:nth-child(even) .ch-media{order:2}
   .chapter .ch-media{max-width:460px;width:100%;justify-self:end}
+  .chapter .ch-media.ch-wide{max-width:560px}
   .chapter:nth-child(even) .ch-media{justify-self:start}
   .ch-text{align-items:flex-start;text-align:left;padding:0}
   .chapter:nth-child(even) .ch-text{align-items:flex-end;text-align:right}

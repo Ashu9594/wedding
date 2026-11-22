@@ -102,7 +102,11 @@ window.I18N = {
     "alt.p1": "Ashutosh and Priyanka smiling together among the trees",
     "alt.p2": "Ashutosh and Priyanka sitting close on a fallen tree in the forest",
     "alt.p3": "Ashutosh and Priyanka back to back, holding hands on a forest path",
-    "alt.p4": "Ashutosh and Priyanka standing together, smiling at the camera"
+    "alt.p4": "Ashutosh and Priyanka standing together, smiling at the camera",
+    "alt.p5": "Ashutosh and Priyanka forehead to forehead, eyes closed",
+    "alt.p6": "Ashutosh and Priyanka running hand in hand through the waves",
+    "alt.p7": "Priyanka hugging Ashutosh, both smiling in white",
+    "alt.p8": "Ashutosh and Priyanka forehead to forehead at sunset"
   },
 
   mr: {
@@ -206,6 +210,10 @@ window.I18N = {
     "alt.p1": "झाडांमध्ये एकत्र हसताना आशुतोष आणि प्रियांका",
     "alt.p2": "जंगलात पडलेल्या झाडावर जवळ बसलेले आशुतोष आणि प्रियांका",
     "alt.p3": "पाठीला पाठ लावून हात धरलेले आशुतोष आणि प्रियांका",
-    "alt.p4": "कॅमेऱ्याकडे पाहून हसणारे आशुतोष आणि प्रियांका"
+    "alt.p4": "कॅमेऱ्याकडे पाहून हसणारे आशुतोष आणि प्रियांका",
+    "alt.p5": "डोळे मिटून कपाळाला कपाळ लावलेले आशुतोष आणि प्रियांका",
+    "alt.p6": "हातात हात घालून लाटांमधून धावणारे आशुतोष आणि प्रियांका",
+    "alt.p7": "पांढऱ्या पोशाखात हसत मिठी मारलेले आशुतोष आणि प्रियांका",
+    "alt.p8": "सूर्यास्ताच्या प्रकाशात कपाळाला कपाळ लावलेले आशुतोष आणि प्रियांका"
   }
 };

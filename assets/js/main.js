@@ -230,7 +230,11 @@
       { src: 'assets/photos/couple-forest-moment.jpg', alt: 'alt.p2' },
       { src: 'assets/photos/couple-together.jpg', alt: 'alt.p4' },
       { src: 'assets/photos/couple-hand-in-hand.jpg', alt: 'alt.p3' },
-      { src: 'assets/photos/couple-portrait-close.jpg', alt: 'alt.p1' }
+      { src: 'assets/photos/couple-portrait-close.jpg', alt: 'alt.p1' },
+      { src: 'assets/photos/couple-forehead-closeup.jpg', alt: 'alt.p5' },
+      { src: 'assets/photos/couple-beach-run.jpg', alt: 'alt.p6' },
+      { src: 'assets/photos/couple-white-hug.jpg', alt: 'alt.p7' },
+      { src: 'assets/photos/couple-sunset-embrace.jpg', alt: 'alt.p8' }
     ];
     const lb = $('#lightbox'), img = $('#lbImg'), count = $('#lbCount');
     let i = 0, lastFocus = null, x0 = null;
