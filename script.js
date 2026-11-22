@@ -4,17 +4,14 @@
      0. Config            5. Opening curtain       10. Calendar links
      1. Translations      6. Music                 11. Lightbox
      2. Language switch   7. Scroll effects        12. Venue: map + copy
-     3. Ornaments         8. Golden betel leaf     13. RSVP via WhatsApp
-     4. Petal canvas      9. Countdown             14. Akshata, dock
+     3. Ornaments         8. Golden betel leaf     13. Akshata, dock
+     4. Petal canvas      9. Countdown             
    ===================================================================== */
 (function () {
   'use strict';
 
   /* ---------------- 0. Config ---------------- */
   const CONFIG = {
-    // WhatsApp number that receives RSVPs, with country code and no "+" (e.g. "919876543210").
-    // Leave empty and WhatsApp will ask the guest which chat to send the message to.
-    rsvpWhatsApp: '',
     muhurat: '2027-01-29T11:13:00+05:30',
     event: {
       title: 'Wedding of Ashutosh & Priyanka',
@@ -101,16 +98,6 @@
       'venue.b1': 'Dadar Parsi Colony', 'venue.b2': 'Near Five Gardens', 'venue.b3': 'Dadar East',
       'venue.directions': 'Get Directions', 'venue.copy': 'Copy Address', 'venue.copied': 'Address copied ✓',
 
-      'rsvp.eyebrow': 'RSVP &amp; blessings', 'rsvp.title': 'Will you join us?',
-      'rsvp.sub': 'Let the families know — your message opens in WhatsApp, ready to send.',
-      'rsvp.name': 'Your name', 'rsvp.namePh': 'e.g. Sneha Kulkarni',
-      'rsvp.attend': 'Attendance', 'rsvp.yes': 'Joyfully attending', 'rsvp.no': 'Blessings from afar',
-      'rsvp.count': 'Number of guests', 'rsvp.less': 'Fewer guests', 'rsvp.more': 'More guests',
-      'rsvp.msg': 'Your blessing (optional)', 'rsvp.msgPh': 'Wishing you a lifetime of love…',
-      'rsvp.send': 'Send on WhatsApp', 'rsvp.errName': 'Please add your name so the families know who it is from.',
-      'rsvp.opened': 'Opening WhatsApp…',
-      'rsvp.waYes': '🙏 Namaskar! This is {name}. We will joyfully attend the wedding of Ashutosh & Priyanka on Friday, 29 January 2027 — {count} guest(s).',
-      'rsvp.waNo': '🙏 Namaskar! This is {name}. We cannot be there in person, but we send our heartfelt blessings to Ashutosh & Priyanka.',
 
       'close.title': 'Your presence is our blessing',
       'close.body': 'Come, shower the couple with akshata and your love on their most beautiful day.',
@@ -190,16 +177,6 @@
       'venue.b1': 'दादर पारसी कॉलनी', 'venue.b2': 'फाइव्ह गार्डन्सजवळ', 'venue.b3': 'दादर पूर्व',
       'venue.directions': 'नकाशा पाहा', 'venue.copy': 'पत्ता कॉपी करा', 'venue.copied': 'पत्ता कॉपी झाला ✓',
 
-      'rsvp.eyebrow': 'उपस्थिती व शुभेच्छा', 'rsvp.title': 'आपण येणार ना?',
-      'rsvp.sub': 'परिवाराला कळवा — आपला संदेश WhatsApp मध्ये तयार होऊन उघडेल.',
-      'rsvp.name': 'आपले नाव', 'rsvp.namePh': 'उदा. स्नेहा कुलकर्णी',
-      'rsvp.attend': 'उपस्थिती', 'rsvp.yes': 'आनंदाने येत आहोत', 'rsvp.no': 'दुरूनच आशीर्वाद',
-      'rsvp.count': 'पाहुण्यांची संख्या', 'rsvp.less': 'कमी', 'rsvp.more': 'जास्त',
-      'rsvp.msg': 'आपल्या शुभेच्छा (ऐच्छिक)', 'rsvp.msgPh': 'आयुष्यभर प्रेम आणि साथ लाभो…',
-      'rsvp.send': 'WhatsApp वर पाठवा', 'rsvp.errName': 'कृपया आपले नाव लिहा, म्हणजे संदेश कोणाचा आहे ते कळेल.',
-      'rsvp.opened': 'WhatsApp उघडत आहे…',
-      'rsvp.waYes': '🙏 नमस्कार! मी {name}. आशुतोष आणि प्रियांका यांच्या शुक्रवार, २९ जानेवारी २०२७ च्या शुभविवाहाला आम्ही आनंदाने उपस्थित राहू — एकूण {count} जण.',
-      'rsvp.waNo': '🙏 नमस्कार! मी {name}. प्रत्यक्ष येणे जमणार नाही, पण आशुतोष आणि प्रियांका यांना आमचे मनःपूर्वक शुभाशीर्वाद.',
 
       'close.title': 'आपली उपस्थिती प्रार्थनीय',
       'close.body': 'या, वधूवरांवर अक्षतांचा वर्षाव करा आणि त्यांच्या आयुष्यातील सर्वात सुंदर दिवशी आपले प्रेम द्या.',
@@ -312,7 +289,7 @@
       rice: ['#F3E5AB', '#EADBA3', '#FFF6D8', '#D4AF37'],
       spark: ['#F3E5AB', '#D4AF37', '#FFFFFF']
     };
-    function size() { const d = Math.min(devicePixelRatio || 1, 2); W = innerWidth; H = innerHeight; c.width = W * d; c.height = H * d; x.setTransform(d, 0, 0, d, 0, 0); }
+    function size() { const d = Math.min(devicePixelRatio || 1, 1.5); W = innerWidth; H = innerHeight; c.width = W * d; c.height = H * d; x.setTransform(d, 0, 0, d, 0, 0); }
     addEventListener('resize', size); size();
     const pick = (a) => a[(Math.random() * a.length) | 0];
     function petalPath(s) { x.beginPath(); x.moveTo(0, -s); x.bezierCurveTo(s * .9, -s * .6, s * .7, s * .7, 0, s); x.bezierCurveTo(-s * .7, s * .7, -s * .9, -s * .6, 0, -s); }
@@ -385,16 +362,19 @@
 
   /* ---------------- 5. Opening curtain ---------------- */
   const intro = $('#intro'), dock = $('#dock');
-  $$('.hero [data-stagger]').forEach((el, i) => { el.style.transitionDelay = (0.55 + i * 0.14) + 's'; });
+  $$('.hero [data-stagger]').forEach((el, i) => { el.style.transitionDelay = (el.classList.contains('hero-arch') ? 0.05 : 0.3 + i * 0.12) + 's'; });
   document.body.classList.add('locked', 'on-dark');
   $('#enterBtn').addEventListener('click', () => {
+    // Order matters for smoothness: curtains move first, petals and the hero follow once the panels are under way.
     intro.classList.add('open');
-    setTimeout(() => { document.body.classList.add('opened'); fx.rain(150, ['marigold', 'rose', 'marigold']); }, reduce ? 0 : 350);
+    const small = innerWidth < 768;
+    setTimeout(() => fx.rain(small ? 70 : 110, ['marigold', 'rose', 'marigold']), reduce ? 0 : 320);
+    setTimeout(() => document.body.classList.add('opened'), reduce ? 0 : 650);
     setTimeout(() => {
       intro.classList.add('done'); intro.hidden = true;
       document.body.classList.remove('locked');
       music.reveal(); dock.hidden = false; updateDockPad(); onScroll();
-    }, reduce ? 0 : 1800);
+    }, reduce ? 0 : 1350);
   }, { once: true });
   function updateDockPad() { document.documentElement.style.setProperty('--dock-h', dock.hidden || innerWidth >= 768 ? '0px' : (dock.offsetHeight + 16) + 'px'); }
   addEventListener('resize', updateDockPad);
@@ -607,31 +587,7 @@
     });
   })();
 
-  /* ---------------- 13. RSVP → WhatsApp ---------------- */
-  (function rsvp() {
-    const form = $('#rsvpForm'), out = $('#gCount'), field = $('#countField'), err = $('#rsvpErr');
-    let n = 2;
-    const draw = () => { out.textContent = num(n); };
-    $('#gMinus').addEventListener('click', () => { n = Math.max(1, n - 1); draw(); });
-    $('#gPlus').addEventListener('click', () => { n = Math.min(15, n + 1); draw(); });
-    $$('input[name="attend"]', form).forEach((r) => r.addEventListener('change', () => { field.hidden = $('#rsvpNo').checked; }));
-    onLang.push(draw); draw();
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = $('#rsvpName').value.trim(), msg = $('#rsvpMsg').value.trim();
-      if (!name) { err.textContent = t('rsvp.errName'); $('#rsvpName').focus(); return; }
-      err.textContent = '';
-      const yes = $('#rsvpYes').checked;
-      let text = t(yes ? 'rsvp.waYes' : 'rsvp.waNo').replace('{name}', name).replace('{count}', num(n));
-      if (msg) text += '\n\n' + msg;
-      text += '\n\n#AshutoshWedsPriyanka';
-      const url = 'https://wa.me/' + CONFIG.rsvpWhatsApp.replace(/\D/g, '') + '?text=' + encodeURIComponent(text);
-      toast(t('rsvp.opened'));
-      window.open(url, '_blank', 'noopener');
-    });
-  })();
-
-  /* ---------------- 14. Akshata ---------------- */
+  /* ---------------- 13. Akshata ---------------- */
   $('#akshataBtn').addEventListener('click', () => {
     fx.rain(180, ['rice', 'rice', 'marigold', 'rose']);
     toast(t('toast.akshata'));

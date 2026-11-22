@@ -50,7 +50,7 @@ body.lang-fade main{opacity:.2}
 .ivory{background:var(--grain),var(--ivory)}
 .cream{background:var(--grain),var(--cream)}
 .maroon{background:radial-gradient(120% 80% at 50% 0%,#932A33 0%,var(--maroon) 45%,var(--maroon-deep) 100%);color:var(--on-maroon)}
-.maroon::before,.paithani::before{content:"";position:absolute;inset:0;background:var(--grain);opacity:.6;mix-blend-mode:overlay;pointer-events:none}
+.maroon::before,.paithani::before{content:"";position:absolute;inset:0;background:var(--grain);opacity:.35;pointer-events:none}
 .sec > *{position:relative}
 
 /* ---------- type ---------- */
@@ -99,6 +99,7 @@ html:lang(mr) .btn{font-family:var(--f-mr);font-weight:400;letter-spacing:.02em;
 .lang button[data-lang="mr"]{font-family:var(--f-mr);font-weight:400;letter-spacing:0;font-size:.95rem}
 .lang button[aria-pressed="true"]{background:var(--maroon);color:var(--ivory)}
 body.on-dark .lang{background:rgba(78,16,22,.45)}
+body.locked .lang{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(78,16,22,.85)} /* no live blur over the moving curtain */
 body.on-dark .lang button{color:var(--gold-2)}
 body.on-dark .lang button[aria-pressed="true"]{background:var(--metal);color:var(--maroon-deep)}
 
@@ -132,19 +133,18 @@ body.on-dark .lang button[aria-pressed="true"]{background:var(--metal);color:var
   background:
     repeating-linear-gradient(90deg,rgba(0,0,0,.22) 0,rgba(255,255,255,.05) 34px,rgba(0,0,0,.18) 70px,rgba(255,255,255,.07) 104px,rgba(0,0,0,.22) 140px),
     radial-gradient(120% 70% at 50% 30%,#9A2B34,var(--maroon) 55%,var(--maroon-deep));
-  transition:transform 1.7s cubic-bezier(.7,0,.2,1)}
+  will-change:transform;transform:translate3d(0,0,0);backface-visibility:hidden;transition:transform 1.25s cubic-bezier(.65,0,.25,1)}
 .curtain-l{left:0}.curtain-r{right:0}
 /* Paithani zari border on the inner edge of each panel */
 .curtain::after{content:"";position:absolute;top:0;bottom:0;width:40px;
   background:conic-gradient(from 135deg at 50% 0,var(--maroon) 90deg,transparent 0) 0 0/40px 22px,
     linear-gradient(90deg,var(--leaf) 0 4px,transparent 4px calc(100% - 4px),var(--leaf) calc(100% - 4px)),var(--metal)}
 .curtain-l::after{right:0}.curtain-r::after{left:0}
-.curtain::before{content:"";position:absolute;inset:0;background:var(--grain);opacity:.6;mix-blend-mode:overlay}
-#intro.open .curtain-l{transform:translateX(-102%)}
-#intro.open .curtain-r{transform:translateX(102%)}
+#intro.open .curtain-l{transform:translate3d(-102%,0,0)}
+#intro.open .curtain-r{transform:translate3d(102%,0,0)}
 .intro-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;max-width:440px;width:100%;color:var(--on-maroon);
   padding:calc(70px + env(safe-area-inset-top,0px)) var(--gr) calc(32px + env(safe-area-inset-bottom,0px)) var(--gl);max-height:100%;overflow-y:auto;
-  animation:introIn 1.4s var(--ease) both;transition:opacity .6s var(--ease),transform .8s var(--ease)}
+  will-change:opacity,transform;animation:introIn 1.4s var(--ease) both;transition:opacity .4s var(--ease),transform .5s var(--ease)}
 /* arched silk panel behind the blessing so the zari seam never runs through the text */
 .intro-content::before{content:"";position:absolute;z-index:-1;left:max(4px,calc(var(--gl) - 10px));right:max(4px,calc(var(--gr) - 10px));top:calc(44px + env(safe-area-inset-top,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));
   border-radius:999px 999px 28px 28px/260px 260px 28px 28px;background:radial-gradient(120% 80% at 50% 25%,#8E2630,var(--maroon-deep) 75%);
@@ -185,8 +185,7 @@ html:lang(mr) .hero-date strong{font-family:var(--f-mr);font-weight:400}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 .hero-arch{order:1;position:relative;width:min(78vw,400px);margin:0 auto;aspect-ratio:3/4}
 .arch-photo{position:absolute;inset:0;clip-path:url(#archClip);-webkit-clip-path:url(#archClip);background:var(--cream);overflow:hidden}
-.arch-photo img{width:100%;height:112%;object-fit:cover;object-position:54% 30%;transform:translate3d(0,var(--py,0px),0) scale(1.08);transition:transform 2.6s var(--ease)}
-body.opened .arch-photo img{transform:translate3d(0,var(--py,0px),0) scale(1)}
+.arch-photo img{width:100%;height:112%;object-fit:cover;object-position:54% 30%;transform:translate3d(0,var(--py,0px),0)}
 .arch-line{position:absolute;inset:-12px;width:calc(100% + 24px);height:calc(100% + 24px);overflow:visible;pointer-events:none}
 .arch-kalash{position:absolute;left:50%;top:-34px;width:14px;height:22px;transform:translateX(-50%);background:var(--metal);clip-path:polygon(50% 0,70% 40%,100% 60%,70% 100%,30% 100%,0 60%,30% 40%)}
 .hero [data-stagger]{opacity:0;transform:translateY(18px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
@@ -351,25 +350,7 @@ html:lang(mr) .vdl dd span{font-family:var(--f-mr-body)}
 .badges li{padding:6px 12px;border-radius:999px;background:rgba(46,74,54,.08);color:var(--leaf);font-size:.8rem;font-weight:500;border:1px solid rgba(46,74,54,.18)}
 @media (min-width:860px){.venue{grid-template-columns:1.1fr 1fr}.venue-map{min-height:100%}}
 
-/* ---------- 10. RSVP ---------- */
-.rsvp{display:flex;flex-direction:column;gap:20px;text-align:left;background:#fff;padding:clamp(24px,5vw,40px);border:1px solid rgba(197,155,39,.45);border-radius:6px;box-shadow:0 24px 60px rgba(35,31,32,.08)}
-.field{display:flex;flex-direction:column;gap:8px;border:0;margin:0;padding:0;min-width:0}
-.field > span,.field legend{font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);padding:0}
-html:lang(mr) .field > span,html:lang(mr) .field legend{font-family:var(--f-mr);font-weight:400;letter-spacing:0;text-transform:none;font-size:1rem}
-.field input,.field textarea{width:100%;padding:14px 16px;border-radius:10px;border:1px solid rgba(35,31,32,.18);background:var(--ivory);font-size:1rem;transition:border-color .2s,box-shadow .2s}
-.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(197,155,39,.2)}
-.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.choice label{position:relative;cursor:pointer}
-.choice input{position:absolute;opacity:0;pointer-events:none}
-.choice span{display:flex;align-items:center;justify-content:center;text-align:center;min-height:52px;padding:10px;border-radius:10px;border:1px solid rgba(35,31,32,.18);background:var(--ivory);font-size:.92rem;transition:all .25s}
-.choice input:checked + span{border-color:var(--maroon);background:var(--maroon);color:var(--ivory)}
-.choice input:focus-visible + span{outline:2px solid var(--gold);outline-offset:2px}
-.stepper{display:flex;align-items:center;gap:0;width:max-content;border:1px solid rgba(35,31,32,.18);border-radius:999px;background:var(--ivory)}
-.stepper button{width:48px;height:48px;border:0;background:transparent;font-size:1.4rem;cursor:pointer;color:var(--maroon);border-radius:50%}
-.stepper output{min-width:40px;text-align:center;font-family:var(--f-display);font-size:1.5rem;color:var(--maroon)}
-.form-err{min-height:1.2em;color:var(--maroon);font-size:.9rem}
-
-/* ---------- 11. closing ---------- */
+/* ---------- 10. closing ---------- */
 .closing{padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
 .akshata-btn{margin-top:6px}
 .close-fams{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px;font-family:var(--f-display);font-size:1.4rem;color:var(--on-maroon);margin-top:18px}
